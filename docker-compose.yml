@@ -1,0 +1,28 @@
+version: '3.8'
+
+services:
+  cloudflare-tunnel:
+    image: cloudflare/cloudflared:latest
+    command:  tunnel --no-autoupdate run
+    restart: always
+    secrets:
+      - cloudflare_token
+    environment:
+      - TUNNEL_TOKEN=<token_goes_here>
+  minecraft:
+    image: itzg/minecraft-server
+    tty: true
+    stdin_open: true
+    ports:
+      - "25565:25565"
+    environment:
+      EULA: TRUE
+      VERSION: "1.20.4"
+      OPS: |
+        willbo_
+      DIFFICULTY: hard
+      INIT_MEMORY: 2G
+      MAX_MEMORY: 8G
+    volumes:
+      - ./data:/data
+
