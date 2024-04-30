@@ -5,8 +5,6 @@ services:
     image: cloudflare/cloudflared:latest
     command:  tunnel --no-autoupdate run
     restart: always
-    secrets:
-      - cloudflare_token
     environment:
       - TUNNEL_TOKEN=<token_goes_here>
   minecraft:
