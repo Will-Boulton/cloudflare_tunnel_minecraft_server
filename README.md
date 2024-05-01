@@ -1,4 +1,4 @@
-Uses a cloudflare tunnel to allow hosting a minecraft server without a static IP address. 
+Uses a cloudflare tunnel to allow hosting a minecraft server without a static IP address, all in Docker.
 
 ## Running the server
 
@@ -6,6 +6,7 @@ Uses a cloudflare tunnel to allow hosting a minecraft server without a static IP
 
 Either using the GUI or the `cloudflared` cli - keep track of the tunnel name as you'll need this later as an environment variable `TUNNEL_NAME`
 
+Set a service over the tunnel as `tcp://localhost:25565` - this is telling cloudflare to forward TCP traffic sent to the tunnel to port `25565` on the server, which is the port the minecraft server is configured to run on.
 
 > **Setting `TUNNEL_NAME`**
 ><details>
